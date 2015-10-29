@@ -46,7 +46,7 @@ module Shenzhen::Plugins
         tool = File.join(File.dirname(xcode), "Applications/Application Loader.app/Contents/itms/bin/iTMSTransporter").gsub(/\s/, '\ ') if !File.exist?(tool)
 
         escaped_password = Shellwords.escape(@password)
-        args = [tool, "-m upload", "-f Package.itmsp", "-u #{Shellwords.escape(@account)}", "-p #{escaped_password}"]
+        args = [tool, "-m upload", "-t DAV", "-f Package.itmsp", "-u #{Shellwords.escape(@account)}", "-p #{escaped_password}"]
         command = args.join(' ')
 
         puts command.sub("-p #{escaped_password}", "-p ******") if $verbose
